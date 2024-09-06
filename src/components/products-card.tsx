@@ -11,13 +11,17 @@ export function ProductsCard({product}: any) {
      router.refresh()
         
     }
+    const formattedPrice = product.price.toLocaleString('es-ES', {
+      style: 'currency',
+      currency: 'COP' // Ajusta la moneda según tus necesidades
+    });
   return (
     <Card onClick={() => router.push(`/products/${product.id}`)} key={product.id}>
             <CardHeader>
               <CardTitle className='flex justify-between items-center'>
               {product.name}
               <span className='ml-2 text-sm text-gray-600 font-bold'>
-                ${product.price}
+                ${formattedPrice}
               </span>
               </CardTitle>
             </CardHeader>
