@@ -14,7 +14,7 @@ async function ProductsNewPage({ params }: { params: { id: number } }) {
     const res = await getProductsId(Number(params.id))
     console.log("🚀 ~ ProductsNewPage ~ res:", res)
     return (
-        <div className="flex justify-center h-screen items-center">
+        <div className="flex justify-center  h-screen items-center">
             <Card>
                 <CardHeader >
                     <CardTitle className="flex justify-between items-center">Create Product

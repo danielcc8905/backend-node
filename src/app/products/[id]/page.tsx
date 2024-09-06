@@ -4,10 +4,13 @@ import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 async function ProductDetailPage({ params }: { params: { id: number } }) {
     const product = await getProductsId(params.id)
-    console.log("🚀 ~ file: page.tsx:ProductDetailPage ~ pararms:", product)
+    const formattedPrice = product.price.toLocaleString('es-ES', {
+        style: 'currency',
+        currency: 'COP' // Ajusta la moneda según tus necesidades
+      });
     return (
-        <div className=" flex justify-center items-center h-screen">
-            <Card>
+        <div className="flex justify-center items-center h-screen">
+            <Card className="w-1/2">
                 <CardHeader>
                     <CardTitle className="flex justify-between items-center">
                         Product Detail - {product.id}
@@ -16,10 +19,10 @@ async function ProductDetailPage({ params }: { params: { id: number } }) {
                 </CardHeader>
                 <CardContent>
                     <h1>{ product.name}</h1>
-                    <p> { product.description}</p>
-                    <p> { product.price}</p>
+                    <p className="break-words text-truncate"> { product.description}</p>
+                    <p className="text-black font-bold mt-2 mb-2">  ${formattedPrice}</p>
                     <img src={product.image} alt=""
-                    className="w-full h-64 object-cover"
+                    className="w-full h-64 object-cover rounded-lg"
                     />
                 </CardContent>
             </Card>
